@@ -9,7 +9,6 @@ namespace Test_Project
         static void Main(string[] args)
         {
             string operation; // local variable 
-
             
             do
             {
