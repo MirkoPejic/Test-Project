@@ -8,7 +8,7 @@ namespace Test_Project
     {
         static void Main(string[] args)
         {
-            string operation; // local variable 
+            string Operation; // local variable
             
             do
             {
@@ -18,23 +18,29 @@ namespace Test_Project
                     Console.WriteLine("Operation: ENLIST or DISPLAY ");
                     Console.Write("Operation: ");
 
-                    operation = Console.ReadLine().ToUpper(); // adjust for case sensitive 
-                    if (operation != "ENLIST" && operation != "DISPLAY")
+                    Operation = Console.ReadLine().ToUpper(); // adjust for case sensitive 
+                    if (Operation != Operations.Enlist && Operation != Operations.Display)
+                    {
                         Console.WriteLine("Operation non-existing, please use appropriate operation.");
-                } while (operation != "ENLIST" && operation != "DISPLAY");
+                    }
+                    else
+                    {
+                        break;
+                    }
+                } while (Operation != Operations.Enlist && Operation != Operations.Display);
 
                 //if the choice enlist
-                if (operation == "ENLIST")
+                if (Operation == Operations.Enlist)
                 {
                     Console.WriteLine("Student");
-                    Operations.ENLIST();
+                    UnosIspisManipuliranje.ENLIST();
                 }
-            } while (operation == "ENLIST");
+            } while (Operation == Operations.Enlist);
 
             //if the choice display
-            if (operation == "DISPLAY")
+            if (Operation == Operations.Display)
             {                
-                Operations.DISPLAY();
+                UnosIspisManipuliranje.DISPLAY();
             }
             
             Console.ReadKey();

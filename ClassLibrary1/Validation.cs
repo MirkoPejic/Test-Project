@@ -7,44 +7,19 @@ using System.IO;
 
 namespace ClassLibrary1
 {
-    public class Validation : Exception
+    public class Validation
     {
-        // exception, insert value
-        public static void ValidateString()
-        {
-
-            try
-            {
-                throw new Validation("You need to insert value.");
-            }
-            catch (Validation ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-
-        }
+        private static bool Rezultat;
+        private static double Number = -1;
 
         // exception, numerical value
-        public static void ValidateGpa()
+        public static bool ValidateGpa(string Gpa)
         {
-            try
-            {
-                throw new Validation("You need to insert numerical value.");
-            }
-            catch (Validation ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
+            Rezultat = double.TryParse(Gpa, out Number);
+            return Rezultat;
         }
 
-        public Validation() : base()
-        {
-
-        }
-        public Validation(string message) : base(message)
-        {
-
-        }
+       
 
     }
 }

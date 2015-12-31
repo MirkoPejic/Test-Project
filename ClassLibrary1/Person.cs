@@ -10,10 +10,9 @@ namespace ClassLibrary1
 
     public abstract class Person
     {
-        public abstract string FirstName { get; set; }
-        public abstract string LastName { get; set; }
-
-        public abstract int ID { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public int ID { get; set; }
     }
 }
 
