@@ -10,6 +10,6 @@ namespace ClassLibrary1
 
     public class Student : Person
     {
-        public string GPA { get; set; }
+        public string Gpa { get; set; }
     }
 }

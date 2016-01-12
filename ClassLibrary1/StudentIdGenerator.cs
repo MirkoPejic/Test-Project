@@ -9,7 +9,7 @@ namespace ClassLibrary1
     public class StudentIdGenerator
     {
         private static StudentIdGenerator Instances = null;
-        private static readonly object ID = new object();
+        private static readonly object Id = new object();
         StudentIdGenerator()
         {                     
         }
