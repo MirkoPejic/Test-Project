@@ -16,9 +16,9 @@ namespace ClassLibrary1
 
 
         #region MethodValidateGpa
-        public static bool ValidateGpa(string Gpa)
+        public static bool ValidateGpa(string gpa)
         {
-            Rezultat = double.TryParse(Gpa, out Number);
+            Rezultat = double.TryParse(gpa, out Number);
             return Rezultat;
         } 
         #endregion
