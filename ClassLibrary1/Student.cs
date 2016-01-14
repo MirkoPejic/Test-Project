@@ -7,7 +7,6 @@ using ClassLibrary1;
 
 namespace ClassLibrary1
 {
-
     public class Student : Person
     {
         public string Gpa { get; set; }

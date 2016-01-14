@@ -10,22 +10,19 @@ namespace ClassLibrary1
     {
         private static StudentIdGenerator Instances = null;
         private static readonly object Id = new object();
-        StudentIdGenerator()
-        {                     
-        }
-
+        StudentIdGenerator() { }
         public static StudentIdGenerator Instance
         {
             get
             {                
-                    if(Instances == null)
-                    {
-                        Instances = new StudentIdGenerator();
-                    }
-                    return Instances;                
+                if(Instances == null)
+                {
+                    Instances = new StudentIdGenerator();
+                }
+                return Instances;                
             }
         }
-        // unique id
+        //unique id
         private int I = 1000;
         public int GetId()
         {

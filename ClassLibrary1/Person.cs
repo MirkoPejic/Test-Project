@@ -7,7 +7,6 @@ using ClassLibrary1;
 
 namespace ClassLibrary1
 {
-
     public abstract class Person
     {
         public string FirstName { get; set; }
