@@ -7,7 +7,7 @@ using System.IO;
 
 namespace ClassLibrary1
 {
-     public class Validation
+    public class Validation
     {
         public static bool ValidateGpa(string gpa)
         {
@@ -16,5 +16,5 @@ namespace ClassLibrary1
             Rezultat = double.TryParse(gpa, out Number);
             return Rezultat;
         }
-    }
+    }   
 }

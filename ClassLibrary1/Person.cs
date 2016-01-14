@@ -14,4 +14,3 @@ namespace ClassLibrary1
         public int Id { get; set; }
     }
 }
-
