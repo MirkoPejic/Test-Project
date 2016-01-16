@@ -6,7 +6,8 @@ namespace Test_Project
     class Program
     {
         static void Main(string[] args)
-        {            
+        {
+            StudentRepository Student = StudentRepository.GetStudentObject();
             string Operation;
             string Name;
             string LastName;
@@ -49,7 +50,7 @@ namespace Test_Project
                         {
                             break;
                         }
-                    } while (string.IsNullOrEmpty(Name));
+                    } while (true);
                     //input last name
                     do
                     {
@@ -63,7 +64,7 @@ namespace Test_Project
                         {
                             break;
                         }
-                    } while (string.IsNullOrEmpty(LastName));
+                    } while (true);
                     //input gpa
                     do
                     {
@@ -82,8 +83,8 @@ namespace Test_Project
                         {
                             break;
                         }
-                    } while ((string.IsNullOrEmpty(Gpa)) || (!Result));
-                    StudentRepository.AddStudentToList(Name, LastName, Gpa); 
+                    } while (true);
+                    Student.AddStudent(Name, LastName, Gpa);
                 }
             } while (Operation == Operations.Enlist);
             //if the choice display
@@ -91,14 +92,14 @@ namespace Test_Project
             {
                 Console.WriteLine("Students in a system:");
                 //loop for printig list
-                if (StudentRepository.ReturnList().Count < 1)
+                if (Student.ReturnStudentList().Count < 1)
                 {
                     Console.WriteLine("List is empty!");
                 }
                 else
                 {
                     int I = 1;
-                    foreach (Student St in StudentRepository.ReturnList())
+                    foreach (Student St in Student.ReturnStudentList())
                     {
                         Console.WriteLine("{0}. {1}, {2} - {3}", I, St.LastName, St.FirstName, St.Gpa);
                         Console.WriteLine("ID: {0}", St.Id);

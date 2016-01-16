@@ -8,18 +8,17 @@ namespace ClassLibrary1
 {
     public class StudentIdGenerator
     {
-        private static StudentIdGenerator Instances = null;
-        private static readonly object Id = new object();
-        StudentIdGenerator() { }
-        public static StudentIdGenerator Instance
+        private static StudentIdGenerator PrivateIdGenerator = null;
+        private StudentIdGenerator() { }
+        public static StudentIdGenerator IdGenerator
         {
             get
             {                
-                if(Instances == null)
+                if(PrivateIdGenerator == null)
                 {
-                    Instances = new StudentIdGenerator();
+                    PrivateIdGenerator = new StudentIdGenerator();
                 }
-                return Instances;                
+                return PrivateIdGenerator;                
             }
         }
         //unique id

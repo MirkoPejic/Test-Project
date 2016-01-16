@@ -6,24 +6,30 @@ using System.Threading.Tasks;
 
 namespace ClassLibrary1
 {
-    public static class StudentRepository
+    public class StudentRepository
     {
-        public static List<Student> StudentContainer = new List<Student>();
-        private static StudentIdGenerator Id = StudentIdGenerator.Instance;
-        //method add student to list
-        public static void AddStudentToList( string name, string lastName, string gpa)
+        private List<Student> StudentList = new List<Student>();
+        private StudentIdGenerator GeneratedId = StudentIdGenerator.IdGenerator;        
+        private static StudentRepository StudentObject = null;
+        private StudentRepository() { }
+        public static StudentRepository GetStudentObject()
         {
-            StudentContainer.Add(new Student()
-            { FirstName = name, LastName = lastName, Gpa = gpa, Id = Id.GetId() });
-        }          
-        public static void SortList()
-        {   //sorting list by last name
-            StudentContainer.Sort((x, y) => string.Compare(x.LastName, y.LastName));
+            if (StudentObject == null)
+            {
+                StudentObject = new StudentRepository();
+            }
+            return StudentObject;
         }
-        public static List<Student> ReturnList()
+        //method for add student
+        public void AddStudent( string name, string lastName, string gpa)
         {
-            SortList();
-            return StudentContainer;
+            StudentList.Add(new Student()
+            { FirstName = name, LastName = lastName, Gpa = gpa, Id = GeneratedId.GetId() });
+        }          
+        public List<Student> ReturnStudentList()
+        {
+            StudentList = StudentList.OrderBy(x => x.LastName).ToList();
+            return StudentList;
         }
     }
 }
