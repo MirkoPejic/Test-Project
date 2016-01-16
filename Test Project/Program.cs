@@ -86,7 +86,11 @@ namespace Test_Project
                     } while (true);
                     Student.AddStudent(Name, LastName, Gpa);
                 }
-            } while (Operation == Operations.Enlist);
+                else
+                {
+                    break;
+                }
+            } while (true);
             //if the choice display
             if (Operation == Operations.Display)
             {
