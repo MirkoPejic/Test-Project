@@ -32,7 +32,7 @@ namespace Test_Project
                     {
                         break;
                     }
-                } while (Operation != Operations.Enlist && Operation != Operations.Display);
+                } while (true);
                 //if the choice enlist
                 if (Operation == Operations.Enlist)
                 {
