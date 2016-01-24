@@ -107,10 +107,10 @@ namespace Test_Project
                 else
                 {
                     int i = 1;
-                    foreach (Student St in student.GetStudents())
+                    foreach (Student st in student.GetStudents())
                     {
-                        Console.WriteLine("{0}. {1}, {2} - {3}", i, St.LastName, St.FirstName, St.Gpa);
-                        Console.WriteLine("ID: {0}", St.Id);
+                        Console.WriteLine("{0}. {1}, {2} - {3}", i, st.LastName, st.FirstName, st.Gpa);
+                        Console.WriteLine("ID: {0}", st.Id);
                         i++;
                     }
                 }
