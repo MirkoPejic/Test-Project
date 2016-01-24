@@ -8,24 +8,24 @@ namespace ClassLibrary1
 {
     public class StudentIdGenerator
     {
-        private static StudentIdGenerator PrivateIdGenerator = null;
+        private static StudentIdGenerator instance = null;
         private StudentIdGenerator() { }
-        public static StudentIdGenerator IdGenerator
+        public static StudentIdGenerator Instance
         {
             get
             {                
-                if(PrivateIdGenerator == null)
+                if(instance == null)
                 {
-                    PrivateIdGenerator = new StudentIdGenerator();
+                    instance = new StudentIdGenerator();
                 }
-                return PrivateIdGenerator;                
+                return instance;                
             }
         }
         //unique id
-        private int I = 1000;
+        private int i = 1000;
         public int GetId()
         {
-            return I++;
+            return i++;
         }
     }
 }

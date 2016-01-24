@@ -11,10 +11,10 @@ namespace ClassLibrary1
     {
         public static bool ValidateGpa(string gpa)
         {
-            bool Result;
-            double Number = -1;
-            Result = double.TryParse(gpa, out Number);
-            return Result;
+            bool result;
+            double number = -1;
+            result = double.TryParse(gpa, out number);
+            return result;
         }
     }   
 }

@@ -5,17 +5,21 @@ namespace Test_Project
 {
     class Program
     {
+        private class ErrorMessages
+        {
+            public const string InsertValue = "You need to insert value.";
+            public const string NumericalValue = "You need to insert numerical value.";
+            public const string OperationNonExist = "Operation non-existing, please use appropriate operation.";
+        }
         static void Main(string[] args)
         {
-            StudentRepository Student = StudentRepository.GetStudentObject();
-            string Operation;
-            string Name;
-            string LastName;
-            string Gpa;
-            bool Result;
-            const string InsertValue = "You need to insert value.";
-            const string NumericalValue = "You need to insert numerical value.";
-            const string OperationNonExist = "Operation non-existing, please use appropriate operation.";
+            StudentRepository student = StudentRepository.Instance();
+            string operation;
+            string name;
+            string lastName;
+            string gpa;
+            bool result;
+            
             do
             {
                 //loop to enter method
@@ -23,10 +27,10 @@ namespace Test_Project
                 {
                     Console.WriteLine("Operation: ENLIST or DISPLAY ");
                     Console.Write("Operation: ");
-                    Operation = Console.ReadLine().ToUpper(); // adjust for case sensitive 
-                    if (Operation != Operations.Enlist && Operation != Operations.Display)
+                    operation = Console.ReadLine().ToUpper(); // adjust for case sensitive 
+                    if (operation != Operations.Enlist && operation != Operations.Display)
                     {
-                        Console.WriteLine(OperationNonExist);
+                        Console.WriteLine(ErrorMessages.OperationNonExist);
                     }
                     else
                     {
@@ -34,17 +38,17 @@ namespace Test_Project
                     }
                 } while (true);
                 //if the choice enlist
-                if (Operation == Operations.Enlist)
+                if (operation == Operations.Enlist)
                 {
                     Console.WriteLine("Student");
                     //input name
                     do
                     {
                         Console.Write("First Name: ");
-                        Name = Console.ReadLine().Trim();
-                        if (string.IsNullOrEmpty(Name))
+                        name = Console.ReadLine().Trim();
+                        if (string.IsNullOrEmpty(name))
                         {
-                            Console.WriteLine(InsertValue);
+                            Console.WriteLine(ErrorMessages.InsertValue);
                         }
                         else
                         {
@@ -55,10 +59,10 @@ namespace Test_Project
                     do
                     {
                         Console.Write("Last Name: ");
-                        LastName = Console.ReadLine().Trim();
-                        if (string.IsNullOrEmpty(LastName))
+                        lastName = Console.ReadLine().Trim();
+                        if (string.IsNullOrEmpty(lastName))
                         {
-                            Console.WriteLine(InsertValue);
+                            Console.WriteLine(ErrorMessages.InsertValue);
                         }
                         else
                         {
@@ -69,22 +73,22 @@ namespace Test_Project
                     do
                     {
                         Console.Write("GPA: ");
-                        Gpa = Console.ReadLine().Trim();
-                        Result = Validation.ValidateGpa(Gpa);
-                        if (string.IsNullOrEmpty(Gpa))
+                        gpa = Console.ReadLine().Trim();
+                        result = Validation.ValidateGpa(gpa);
+                        if (string.IsNullOrEmpty(gpa))
                         {
-                            Console.WriteLine(InsertValue);
+                            Console.WriteLine(ErrorMessages.InsertValue);
                         }
-                        else if (!Result)
+                        else if (!result)
                         {
-                            Console.WriteLine(NumericalValue);
+                            Console.WriteLine(ErrorMessages.NumericalValue);
                         }
                         else
                         {
                             break;
                         }
                     } while (true);
-                    Student.AddStudent(Name, LastName, Gpa);
+                    student.AddStudent(name, lastName, gpa);
                 }
                 else
                 {
@@ -92,22 +96,22 @@ namespace Test_Project
                 }
             } while (true);
             //if the choice display
-            if (Operation == Operations.Display)
+            if (operation == Operations.Display)
             {
                 Console.WriteLine("Students in a system:");
                 //loop for printig list
-                if (Student.ReturnStudentList().Count < 1)
+                if (student.GetStudents().Count < 1)
                 {
                     Console.WriteLine("List is empty!");
                 }
                 else
                 {
-                    int I = 1;
-                    foreach (Student St in Student.ReturnStudentList())
+                    int i = 1;
+                    foreach (Student St in student.GetStudents())
                     {
-                        Console.WriteLine("{0}. {1}, {2} - {3}", I, St.LastName, St.FirstName, St.Gpa);
+                        Console.WriteLine("{0}. {1}, {2} - {3}", i, St.LastName, St.FirstName, St.Gpa);
                         Console.WriteLine("ID: {0}", St.Id);
-                        I++;
+                        i++;
                     }
                 }
             }

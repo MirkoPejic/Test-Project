@@ -8,28 +8,28 @@ namespace ClassLibrary1
 {
     public class StudentRepository
     {
-        private List<Student> StudentList = new List<Student>();
-        private StudentIdGenerator GeneratedId = StudentIdGenerator.IdGenerator;        
-        private static StudentRepository StudentObject = null;
+        private List<Student> studentList = new List<Student>();
+        private StudentIdGenerator idGenerator = StudentIdGenerator.Instance;        
+        private static StudentRepository instance = null;
         private StudentRepository() { }
-        public static StudentRepository GetStudentObject()
+        public static StudentRepository Instance()
         {
-            if (StudentObject == null)
+            if (instance == null)
             {
-                StudentObject = new StudentRepository();
+                instance = new StudentRepository();
             }
-            return StudentObject;
+            return instance;
         }
         //method for add student
         public void AddStudent( string name, string lastName, string gpa)
         {
-            StudentList.Add(new Student()
-            { FirstName = name, LastName = lastName, Gpa = gpa, Id = GeneratedId.GetId() });
+            studentList.Add(new Student()
+            { FirstName = name, LastName = lastName, Gpa = gpa, Id = idGenerator.GetId() });
         }          
-        public List<Student> ReturnStudentList()
+        public List<Student> GetStudents()
         {
-            StudentList = StudentList.OrderBy(x => x.LastName).ToList();
-            return StudentList;
+            studentList = studentList.OrderBy(x => x.LastName).ToList();
+            return studentList;
         }
     }
 }
